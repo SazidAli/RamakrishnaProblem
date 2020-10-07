@@ -1,0 +1,41 @@
+/******************************************************************************
+
+                            Sazid Ali Solution of Ramakrishna Problem 
+                            
+*******************************************************************************/
+ class JetPack{
+
+     public static void main(String []args){
+         
+         // input value compartments with threshold value is first and thesisCompartment is second parameter
+         int[] compartments = new int[]{2,3,1,1,3}; 
+         int result = findThesis(compartments, 5);
+         
+        System.out.println("\n Output "+result);
+     }
+     
+     static int findThesis(int[] compartments, int thesisCompartment)
+     {
+         int minimumHops = 0;
+         int tempResult = 0;
+         int j = 0;
+         // checking each path from first to last
+         
+         for(int i=0;i< compartments.length-1; i++)
+         {
+             j=i;
+             tempResult = i;
+         
+             while(j<thesisCompartment-1)
+             {
+                 j += compartments[j];
+                 tempResult++;
+             }
+               if(i == 0)
+                 minimumHops = tempResult;
+                 else if(minimumHops > tempResult)
+                 minimumHops = tempResult;
+         }
+         return minimumHops;
+     }
+}
